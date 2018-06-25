@@ -1,0 +1,8 @@
+.product-card{
+    margin: 40px 0 0 20px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+.product-card p{
+    color: #008855;
+}

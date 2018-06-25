@@ -6,6 +6,12 @@ class Goods {
     public $price;
     public $image;
 
+    function __construct($id, $name, $price, $image){
+        $this->id = $id;
+        $this->name = $name;
+        $this->price = $price;
+        $this->image = $image;
+    }
 // Метод для вывода товара
     function view() {
         echo "<div class='product-card'>
@@ -29,17 +35,14 @@ class Goods {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Карточка товара</title>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<!--<link rel="stylesheet" href="css/style.css" type="text/css" />-->
 <link rel="stylesheet" href="css/style1.css" type="text/css" />
 </head>
 <body>
 <?php
-$a = new Goods();
-$a->id = 1;
-$a->name = 'Adidas sneakers for men';
-$a->price = 300;
-$a->image = 'img/adidas_1.png';
-$a->view();
+$product = new Goods(1, 'Adidas sneakers for men', 300, 'img/adidas_1.png');
+
+$product->view();
 ?>
 </body>
 </html>

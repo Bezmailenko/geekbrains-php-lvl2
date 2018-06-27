@@ -1,5 +1,4 @@
 <?php
-
 abstract class Products
 {
     protected $idProduct;
@@ -16,8 +15,4 @@ abstract class Products
 
     abstract protected function calculateTotalPrice();
     abstract public function render();
-
-
-
-
 }

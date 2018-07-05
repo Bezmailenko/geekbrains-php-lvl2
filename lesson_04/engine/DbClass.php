@@ -21,6 +21,7 @@ class Db {
             }
         }
         $stmt->execute();
+
         return $stmt;
     }
 

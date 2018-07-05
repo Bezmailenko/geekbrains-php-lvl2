@@ -7,7 +7,6 @@ class Db {
     protected $db;
 
     public function __construct() {
-//      $conf = require_once '../config/db_config.php';
       $conf = config_db();
 
       $this->db = new PDO('mysql:host=' . $conf['host'] . ';dbname=' . $conf['db_name'], $conf['user'], $conf['pass']);

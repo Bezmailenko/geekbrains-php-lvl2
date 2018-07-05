@@ -3,7 +3,6 @@
 // Класс товаров
 class Good {
     constructor(url) {
-        // this.id = id;
         this.goodId = null;
         this.url = url;
         this.imgSrc = null;
@@ -16,30 +15,25 @@ class Good {
         let self = this;
 
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: self.url,
             dataType: 'json',
             context: this,
             cache: false,
             success: function (data) {
-                // let $data1 = $.parseJSON(data);
-                console.log(data);
                 for (let key in data.goods) {
                     this.goodItems.push(data.goods[key]);
-                    // console.log(this.goodItems);
                 }
                 self.render($appendContainer);
             },
 
 
             error: function (error) {
-                // console.log('Что-то пошло не так', error);
             }
         });
     }
 
     render($appendContainer) {
-        // $appendContainer.empty();
         for (let key in this.goodItems) {
             this.goodId = parseInt(this.goodItems[key].id_good);
             this.imgSrc = this.goodItems[key].image;
@@ -105,17 +99,15 @@ class Good {
         this.limit = limit;
 
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: self.url,
-            dataType: 'text',
+            dataType: 'json',
             context: this,
             data: {"limit": this.limit},
             success: function (data) {
-                console.log(data);
-                let $data1 = $.parseJSON(data);
 
-                for (let key in $data1.goods) {
-                    this.goodItems.push($data1.goods[key]);
+                for (let key in data.goods) {
+                    this.goodItems.push(data.goods[key]);
                     console.log(this.goodItems);
                 }
                 self.render($appendContainer);

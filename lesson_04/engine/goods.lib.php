@@ -10,7 +10,7 @@ function getMyGoods() {
 }
 
 function addGoods() {
-    $limit = (int)$_POST['limit'];
+    $limit = (int)$_GET['limit'];
     $db = Db::get_instance();
 
     $result = $db->row("SELECT * FROM `goods` LIMIT $limit,4");

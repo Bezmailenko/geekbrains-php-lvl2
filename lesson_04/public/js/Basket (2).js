@@ -21,14 +21,14 @@ class Basket {
         $.ajax({
             type: 'POST',
             url: self.url,
-            dataType: 'json',
+            dataType: 'text',
             context: this,
             success: function (data) {
-
+                let $data1 = $.parseJSON(data);
                 // console.log(data);
 
-                for (let key in data.basket) {
-                    this.basketItems.push(data.basket[key]);
+                for (let key in $data1.basket) {
+                    this.basketItems.push($data1.basket[key]);
                     console.log(this.basketItems);
                 }
                 self.render($appendContainer);

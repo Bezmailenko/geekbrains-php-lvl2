@@ -19,17 +19,17 @@ class Basket {
         let self = this;
 
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: self.url,
             dataType: 'json',
             context: this,
             success: function (data) {
-
-                // console.log(data);
+                // let $data1 = $.parseJSON(data);
+                console.log(data);
 
                 for (let key in data.basket) {
                     this.basketItems.push(data.basket[key]);
-                    console.log(this.basketItems);
+
                 }
                 self.render($appendContainer);
             },
@@ -43,7 +43,7 @@ class Basket {
     render($appendContainer) {
         let $cartSubMenu = $(this.id);
         let $cartCount = $('#cart-count');
-        console.log(this.basketItems);
+        /* console.log(this.basketItems);*/
         if (this.basketItems.length === 0) {
             $cartSubMenu.empty();
             $cartCount.empty();
@@ -123,7 +123,7 @@ class Basket {
                 class: "change"
             });
 
-            $cartProduct.append(`<img src="/img/${this.imgSrc}" class="cart-product__img" alt="Layer">`);
+            $cartProduct.append(`<img src="assets/img/${this.imgSrc}" class="cart-product__img" alt="Layer">`);
 
             $cartProductText.append($productTitle);
             $cartProductText.append('<div class="cart-product__star-rat"><span class="ratings two-half"></span></div>');
@@ -175,13 +175,13 @@ class Basket {
         $cartCount.css({"display": "block"});
         for (let key in this.basketItems) {
             this.basketItems[key].id_good = parseInt(this.basketItems[key].id_good);
-            console.log(typeof this.basketItems[key].id_good);
+            // console.log(typeof this.basketItems[key].id_good);
             if (this.basketItems[key].id_good === id) {
-                console.log('равны');
+                // console.log('равны');
                 this.basketItems[key].col = parseInt(this.basketItems[key].col);
                 this.basketItems[key].col++;
                 this.basketItems[key].amount += price;
-                console.log(basketItem);
+                // console.log(basketItem);
                 return this.render();
             } else {
                 console.log(this.basketItems[key].id_good + 'its' + id);

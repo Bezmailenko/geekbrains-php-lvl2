@@ -212,8 +212,8 @@ class Basket {
                 // console.log(this.basketItems[key].count);
                 this.basketItems[key].col = parseInt(this.basketItems[key].col);
                 this.basketItems[key].col++;
-                console.log(this.basketItems[key].col);
-                this.basketItems[key].amount += price;
+                // console.log(this.basketItems[key].col);
+                this.basketItems[key].amount += parseInt(price);
                 return this.render();
             }
         }
@@ -222,7 +222,7 @@ class Basket {
             if (parseInt(this.basketItems[key].id_good) === parseInt(id) && sign === 'minus' && parseInt(this.basketItems[key].col) > 1) {
                 this.basketItems[key].col = parseInt(this.basketItems[key].col);
                 this.basketItems[key].col--;
-                this.basketItems[key].amount -= price;
+                this.basketItems[key].amount -= parseInt(price);
                 return this.render();
             }
         }

@@ -2,6 +2,7 @@
 session_start();
 
 $_SESSION['id'] = session_id();
+
 define('ENV', 'frontend');
 
 // load auto loaders for classes

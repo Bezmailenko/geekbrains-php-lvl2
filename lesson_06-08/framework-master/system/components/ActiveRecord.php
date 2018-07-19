@@ -255,10 +255,10 @@ abstract class ActiveRecord extends Model {
 //        return $queryString;
     }
 
-    public static function upd($price, $id_session, $id_good) {
+    public static function updPlus($price, $id_good, $id_session) {
         $db = App::$current->connection;
         $queryString = "UPDATE `basket` SET `col`=`col`+1, `amount`=`amount`+{$price} 
-		WHERE `id_session`='{$id_session}' AND `id_good`={$id_good}";
+		WHERE id_session ='{$id_session}' AND id_good ='{$id_good}'";
         $query = $db->prepare($queryString);
         if (!empty($params)) {
             // bind placeholders with values
@@ -272,7 +272,41 @@ abstract class ActiveRecord extends Model {
         return $result;
     }
 
-    public static function findParam($id_session, $id_good) {
+    public static function updMin($price, $id_good, $id_session) {
+        $db = App::$current->connection;
+        $queryString = "UPDATE `basket` SET `col`=`col`-1, `amount`=`amount`-{$price} 
+		WHERE id_session ='{$id_session}' AND id_good ='{$id_good}'";
+        $query = $db->prepare($queryString);
+        if (!empty($params)) {
+            // bind placeholders with values
+            foreach ($params as $key => $value) {
+                $type = static::paramType($value);
+                $query->bindParam($key, $value, $type);
+            }
+        }
+
+        $result = $query->execute();
+        return $result;
+    }
+
+    public static function del($id_good) {
+        $db = App::$current->connection;
+        $queryString = "DELETE FROM `".static::tableName()."` 
+		WHERE `id_session`='{$_SESSION['id']}' AND `id_good`={$id_good}";
+        $query = $db->prepare($queryString);
+        if (!empty($params)) {
+            // bind placeholders with values
+            foreach ($params as $key => $value) {
+                $type = static::paramType($value);
+                $query->bindParam($key, $value, $type);
+            }
+        }
+
+        $result = $query->execute();
+        return $result;
+    }
+
+    public static function findParam($id_good, $id_session) {
         $db = App::$current->connection;
 
         $queryString = "SELECT * FROM `" . static::tableName() . "` WHERE `id_session`='{$id_session}' AND `id_good`={$id_good}";

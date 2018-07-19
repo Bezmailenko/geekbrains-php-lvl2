@@ -1,6 +1,35 @@
-
-
 $(document).ready(function () {
+
+    $(document).on('click', '.change__btn', function () {
+        // let id = parseInt($(this).attr('data-id'));
+        let $id = $(this).attr('data-id');
+        let $price = $(this).attr('data-price');
+        let $sign = $(this).attr('data-sign');
+
+        // basketModal.changeInput(id, price, sign);
+
+        console.log($id);
+        console.log($price);
+        console.log($sign);
+
+        $.ajax({
+            url: "/basket/change/",
+            type: "POST",
+            dataType: 'json',
+            data: {
+                id_good: $id,
+                price: $price,
+                sign: $sign
+            },
+
+            error: function (error) {
+                // console.log(error);
+            }
+
+        });
+
+        basket.changeInput($id, $price, $sign);
+    });
 
     //Корзина в выпадающем меню
     // let $basketGood = [];
@@ -70,28 +99,6 @@ $(document).ready(function () {
     });
 
 
-    $(document).on('click', '.change__btn', function () {
-        let id = $(this).attr('data-id');
-        let price = parseInt($(this).attr('data-price'));
-        let sign = $(this).attr('data-sign');
-        basket.changeInput(id, price, sign);
-        basketModal.changeInput(id, price, sign);
-
-        $.ajax({
-            url: "/basket/change/",
-            type: "POST",
-            dataType: "json",
-            data: {
-                id_good: id,
-                sign: sign,
-                amount: price
-            },
-            error: function (error) {
-                console.log(error);
-            }
-
-        });
-    });
 
     $(document).on('click', '.cart-product__delete-btn', function () {
         let id = $(this).attr('data-id');

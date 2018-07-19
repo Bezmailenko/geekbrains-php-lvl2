@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 16 2018 г., 18:07
+-- Время создания: Июл 19 2018 г., 17:27
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.1.12
 
@@ -47,7 +47,8 @@ CREATE TABLE `basket` (
 INSERT INTO `basket` (`id_basket`, `id_user`, `id_good`, `price`, `is_in_order`, `id_order`, `id_session`, `col`, `amount`) VALUES
 (1, NULL, 16, 73, 1, NULL, '9vaenphu0ujrtrn6d10i8f75gll6g9q1', 1, 73),
 (2, NULL, 1, 52, 1, NULL, '9vaenphu0ujrtrn6d10i8f75gll6g9q1', 3, 156),
-(5, NULL, 1, 52, 1, NULL, '9vaenphu0ujrtrn6d10i8f75gll6g9q2', 1, 52);
+(5, NULL, 1, 52, 1, NULL, '9vaenphu0ujrtrn6d10i8f75gll6g9q2', 1, 52),
+(16, NULL, 3, 73, 1, NULL, '77q04tat8ecctge5g31ko9p1lj39q759', 1, 73);
 
 -- --------------------------------------------------------
 
@@ -182,6 +183,7 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `user_login` varchar(50) NOT NULL,
+  `UID` varchar(50) NOT NULL,
   `user_password` varchar(60) NOT NULL,
   `user_last_action` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -190,8 +192,8 @@ CREATE TABLE `user` (
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id_user`, `user_name`, `user_login`, `user_password`, `user_last_action`) VALUES
-(1, 'User', 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '2018-07-10 17:00:00');
+INSERT INTO `user` (`id_user`, `user_name`, `user_login`, `UID`, `user_password`, `user_last_action`) VALUES
+(1, 'User', 'user', '5b4fff7c3f7593.89594867', 'ee11cbb19052e40b07aac0ca060c23ee', '2018-07-10 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -278,7 +280,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id_basket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_basket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `categories`

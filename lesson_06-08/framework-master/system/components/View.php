@@ -32,12 +32,23 @@ class View {
                 $params
             );
 
+//            $user = $this->_render->render(
+//                "widgets/user.twig",
+//                $params
+//            );
+//
+//            $guest = $this->_render->render(
+//                "widgets/loginform.twig"
+//            );
+
             if ($this->layout) {
                 $layoutFile = $this->_render->render(
                     "layouts/{$this->layout}.twig",
                     [
                         'app' => App::$current->config['app'],
                         'content' => $viewFile,
+//                        'user' => $user,
+//                        'guest' => $guest,
                     ]
                 );
             } else {
